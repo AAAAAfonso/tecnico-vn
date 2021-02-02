@@ -46,12 +46,44 @@ label start:
 
     l "I'm Luis, what's your name?"
 
-    python:
-        povname = renpy.input("What is your name?", length=32)
-        povname = povname.strip()
+    label nome_inicial:
 
-        if not povname:
-            povname = "Mateus Pinho"
+    python:
+        if ('romance_points_luis' not in globals()):
+            romance_points_luis = 1
+        povname = renpy.input("What is your name?", length=32)
+        povname = povname.strip() 
+ 
+    if not povname:
+        
+        if romance_points_luis == 2:
+            l "I OFFER EVERYTHING I HAD FOR THIS CONVERSASTION"
+            
+            l "I REALLY WANTED TO SPEND MORE TIME WITH YOU"
+            
+            l "WHY DO YOU THINK I STARTED TALKING TO YOU"
+            
+            l "BAKAAAAAAAAAAA!!!"
+            
+            return
+        
+        l "..."
+        
+        l "Oh sorry, I didn't realize that you were speechless for seeing me"
+        
+        "Luis whisphers in your hear with a gentle voice."
+        
+        l "Could you repeat your name"
+        
+        l "Just..."
+        
+        l "For..."
+        
+        l "Me."
+        
+        $ romance_points_luis += 1
+        
+        jump nome_inicial
 
     pov "My name is [povname]!"
 
